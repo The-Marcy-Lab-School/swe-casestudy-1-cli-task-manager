@@ -19,14 +19,20 @@ Follow these steps to get started:
 
 ```sh
 # Clone the repo
-git clone git@github.com:The-Marcy-Lab-School/swe-casestudy-1-cli-task-manager.git
+git clone [repo_url]
+cd [repo_name]
 
 # Install dependencies
-cd swe-casestudy-1-cli-task-manager.git
 npm install
 
 # Run the src/index.js file
+node src/index.js
+
+# Or, you can use the start command shortcut
 npm start
+
+# Or, run in developer mode using nodemon
+npm run dev
 ```
 
 ## Key Technologies & Packages
