@@ -39,7 +39,9 @@ pip install pytest
 python3 src/main.py
 ```
 
-A virtual environment is a folder that holds its own copy of Python and its own installed packages, so the packages you install for this project do not affect any other project on your computer. The `source .venv/bin/activate` command turns the virtual environment on for the current terminal window only. When the virtual environment is on, your terminal prompt begins with `(.venv)`. Each time you open a new terminal window to work on this project, run `source .venv/bin/activate` again from the project folder. To turn the virtual environment off, run `deactivate`.
+A virtual environment is a folder that holds its own copy of Python and the project's own installed packages, so the packages you install for this project do not affect any other project on your computer. The `source .venv/bin/activate` command turns the virtual environment on for the current terminal window only. When the virtual environment is on, your terminal prompt begins with `(.venv)`.
+
+Each time you open a new terminal window to work on this project, run `source .venv/bin/activate` again from the project folder. To turn the virtual environment off, run `deactivate`.
 
 The application itself needs no third-party packages, because Python reads a line of typed input with the built-in `input()` function. The only package you install is `pytest`, which runs the tests.
 
@@ -51,7 +53,9 @@ With the virtual environment turned on, run this command from the project folder
 pytest
 ```
 
-The `pytest` command finds the test files in the `tests` folder and runs every function whose name begins with `test_`. Add `-v` to the command (`pytest -v`) to see the name of each test and whether it passed.
+The `pytest` command finds the test files in the `tests` folder (set by `pytest.ini`) and runs every function whose name begins with `test_`. Those test files have full access to the functions in the `src` folder (also because of `pytest.ini`) and they ensure that they behave as desired.
+
+Add `-v` to the command (`pytest -v`) to see the name of each test and whether it passed.
 
 ## Key Technologies & Packages
 
