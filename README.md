@@ -27,14 +27,35 @@ Follow these steps to get started:
 ```sh
 git clone git@github.com:The-Marcy-Lab-School/swe-casestudy-1-cli-task-manager.git
 cd swe-casestudy-1-cli-task-manager
+
+# Create a virtual environment in a folder named .venv, then turn it on
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install pytest into the virtual environment
+pip install pytest
+
+# Run the application
 python3 src/main.py
 ```
 
-There are no dependencies to install. Python reads a line of typed input with
-the built-in `input()` function, so there is no package file and nothing to
-download.
+A virtual environment is a folder that holds its own copy of Python and its own installed packages, so the packages you install for this project do not affect any other project on your computer. The `source .venv/bin/activate` command turns the virtual environment on for the current terminal window only. When the virtual environment is on, your terminal prompt begins with `(.venv)`. Each time you open a new terminal window to work on this project, run `source .venv/bin/activate` again from the project folder. To turn the virtual environment off, run `deactivate`.
+
+The application itself needs no third-party packages, because Python reads a line of typed input with the built-in `input()` function. The only package you install is `pytest`, which runs the tests.
+
+## Running Tests
+
+With the virtual environment turned on, run this command from the project folder:
+
+```sh
+pytest
+```
+
+The `pytest` command finds the test files in the `tests` folder and runs every function whose name begins with `test_`. Add `-v` to the command (`pytest -v`) to see the name of each test and whether it passed.
 
 ## Key Technologies & Packages
 
 - Python 3
-- No third-party packages
+- `input()` and `print()` from the built-in functions
+- The `os` module from the standard library
+- `pytest`
