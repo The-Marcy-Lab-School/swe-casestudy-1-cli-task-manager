@@ -23,9 +23,6 @@ def show_menu():
         elif menu_choice == '2':
             task_choice = input('Enter task number to complete: ').strip()
             try:
-                # input() always gives a string, and int() raises if it is not a number, 
-                # so ask before converting. Inside a try block because int can't 
-                # convert non-integer strings to integers (floats don't work either)
                 task_index = int(task_choice) - 1
                 complete_task(task_index)
             except ValueError:

@@ -37,6 +37,8 @@ pip install pytest
 
 # Run the application
 python3 src/main.py
+
+# If you need to end the program abruptly, use Control+C
 ```
 
 A virtual environment is a folder that holds its own copy of Python and the project's own installed packages, so the packages you install for this project do not affect any other project on your computer. The `source .venv/bin/activate` command turns the virtual environment on for the current terminal window only. When the virtual environment is on, your terminal prompt begins with `(.venv)`.

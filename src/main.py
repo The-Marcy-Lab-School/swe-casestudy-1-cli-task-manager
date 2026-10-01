@@ -2,7 +2,6 @@
 
 from menu import show_menu
 
-
 def start_app():
     print('Welcome to the Task Manager!')
     show_menu()
