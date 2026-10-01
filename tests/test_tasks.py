@@ -2,7 +2,7 @@
 
 from tasks import tasks, add_task, view_tasks, complete_task, clear_tasks
 
-# capsys is a pytest fixture that captures everything printed during a test.
+# capsys is a pytest "fixture" that captures everything printed during a test.
 # capsys.readouterr().out returns that printed text as one string.
 
 

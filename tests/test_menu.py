@@ -6,9 +6,9 @@ from menu import show_menu
 from tasks import tasks
 
 
-# monkeypatch is a pytest fixture that temporarily replaces a function for one test.
-# This fixture replaces input() with a function that returns the next prepared
-# answer, so a test can play the part of the user.
+# monkeypatch is a pytest "fixture" that temporarily replaces a function for one test.
+# This custom fixture allows a test to play the part of the user by replacing input() 
+# with a function that returns the next prepared answer. See below for how it is used
 @pytest.fixture
 def type_answers(monkeypatch):
     # Without this, every round of the menu would really clear the terminal
@@ -29,7 +29,6 @@ def type_answers(monkeypatch):
 
 # Every round of the menu ends with "Press Enter to continue...", which is the ''
 # answer after each choice. Choosing '4' and pressing Enter exits the menu.
-
 
 def test_choosing_exit_stops_the_menu(type_answers):
     type_answers('4', '')
