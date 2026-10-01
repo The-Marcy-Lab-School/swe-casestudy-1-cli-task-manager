@@ -1,7 +1,7 @@
 """Everything to do with the tasks themselves."""
 
-# Tasks are stored in a list of dictionaries. We have provided some sample
-# tasks so there is something on screen the first time you run the app.
+# The list of tasks. Each task is a dictionary with a description and a completion flag.
+# We have provided some sample tasks so there is something on screen the first time you run the app.
 tasks = [
     {
         "description": "Complete the CLI Task Manager project",
@@ -15,49 +15,42 @@ tasks = [
 
 
 def add_task(description):
+    # A guard clause: refuse an empty description
     if not description:
-        print("\nNo description provided.")
+        print('Task description cannot be empty.')
         return
 
-    new_task = {
-        "description": description,
-        "is_complete": False,
-    }
-    tasks.append(new_task)
+    task = {"description": description, "is_complete": False}
+    tasks.append(task)
+    
+    print(f'Task "{description}" added!')
 
-    # This statement produces output like this: Task "Take out the trash" added!
-    # If we want to include quotation marks in a string, we have to "escape" them by putting a \ in front 
-    print(f"\nTask \"{new_task['description']}\" added!")
+
+# Prints out the task list like this:
+# Your Tasks:
+# 1. [x] Complete the CLI Task Manager project
+# 2. [ ] Answer investigation questions
+def view_tasks():
+    if len(tasks) == 0:
+        print('\nNo tasks yet. Add one!')
+        return
+
+    print('\nYour Tasks:')
+    for index, task in enumerate(tasks, start=1):
+        checkbox = '[x]' if task["is_complete"] else '[ ]'
+        print(f'{index}. {checkbox} {task["description"]}')
 
 
 def complete_task(task_index):
-    # A negative index is valid in Python and counts from the end, so
-    # tasks[-1] would quietly mark the LAST task complete. Check the lower
-    # bound explicitly rather than relying on an error.
     if task_index < 0 or task_index >= len(tasks):
-        print("\nInvalid task number.")
+        print('Invalid task number.')
         return
 
     task = tasks[task_index]
     task["is_complete"] = True
-    print(f"\nTask \"{task['description']}\" marked as completed!")
-
-
-def view_tasks():
-    if len(tasks) == 0:
-        print("\nNo tasks yet! Add one to get started.")
-        return
-
-    print("\nYour Tasks:")
-    for index, task in enumerate(tasks, start=1):
-        # Prints out the task list like this:
-        # 1. [x] Complete the CLI Task Manager project
-        # 2. [ ] Answer investigation questions
-        mark = "x" if task["is_complete"] else " "
-        print(f"{index}. [{mark}] {task['description']}")
-    print()
+    print(f'Task "{task["description"]}" marked as completed!')
 
 
 def clear_tasks():
     tasks.clear()
-    print("\nAll tasks cleared!")
+    print('All tasks cleared!')

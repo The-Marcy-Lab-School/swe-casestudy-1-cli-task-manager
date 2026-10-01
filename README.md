@@ -25,8 +25,8 @@ and entering a task description "Return online order".
 Follow these steps to get started:
 
 ```sh
-git clone [repo_url]
-cd [repo_name]
+git clone git@github.com:The-Marcy-Lab-School/swe-casestudy-1-cli-task-manager.git
+cd swe-casestudy-1-cli-task-manager
 python3 src/main.py
 ```
 
@@ -36,11 +36,5 @@ download.
 
 ## Key Technologies & Packages
 
-* Python 3
-* No third-party packages
-
-## Investigation
-
-The questions in [INVESTIGATION.md](./INVESTIGATION.md) walk through how this
-application is built and why. Work through them before building your own CLI
-app.
+- Python 3
+- No third-party packages

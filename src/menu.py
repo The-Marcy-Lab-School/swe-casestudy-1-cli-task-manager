@@ -1,43 +1,43 @@
 """Displays the menu and handles the user's input."""
 
-from tasks import add_task, clear_tasks, complete_task, view_tasks
+import os
 
-
-def clear_screen():
-    # Two ANSI escape codes: move the cursor home, then clear the screen.
-    print("\033[H\033[2J", end="")
-
+from tasks import add_task, view_tasks, complete_task, clear_tasks
 
 def show_menu():
     is_running = True
-
     while is_running:
-        print("Menu:")
-        print("1. Add Task")
-        print("2. Complete Task")
-        print("3. Clear Tasks")
-        print("4. Exit\n")
+        print('\nMenu:')
+        print('1. Add Task')
+        print('2. Complete Task')
+        print('3. Clear All Tasks')
+        print('4. Exit')
 
         view_tasks()
 
-        menu_choice = input("Choose an option (1-4): ").strip()
-        if menu_choice == "1":
-            description = input("Enter task description: ")
+        menu_choice = input('\nChoose an option (1-4): ').strip()
+
+        if menu_choice == '1':
+            description = input('Enter task description: ').strip()
             add_task(description)
-        elif menu_choice == "2":
-            task_choice = input("Enter task number to complete: ")
-            # input() always gives a string, and int() raises if it is not a
-            # number, so ask before converting.
-            if task_choice.strip().lstrip("-").isdigit():
-                complete_task(int(task_choice) - 1)
-            else:
-                print("\nInvalid task number.")
-        elif menu_choice == "3":
+        elif menu_choice == '2':
+            task_choice = input('Enter task number to complete: ').strip()
+            try:
+                # input() always gives a string, and int() raises if it is not a number, 
+                # so ask before converting. Inside a try block because int can't 
+                # convert non-integer strings to integers (floats don't work either)
+                task_index = int(task_choice) - 1
+                complete_task(task_index)
+            except ValueError:
+                print(f'"{task_choice}" is not a number.')
+        elif menu_choice == '3':
             clear_tasks()
-        elif menu_choice == "4":
+        elif menu_choice == '4':
             is_running = False
         else:
-            print("Invalid option, try again.")
+            print('Invalid option. Please choose 1-4.')
 
-        input("\nPress Enter to continue...")
-        clear_screen()
+        input('\nPress Enter to continue...')
+
+        # Clear the output so that the "rounds" of messages don't pile up
+        os.system('clear')
