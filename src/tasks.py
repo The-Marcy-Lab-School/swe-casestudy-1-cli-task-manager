@@ -24,6 +24,9 @@ def add_task(description):
         "is_complete": False,
     }
     tasks.append(new_task)
+
+    # This statement produces output like this: Task "Take out the trash" added!
+    # If we want to include quotation marks in a string, we have to "escape" them by putting a \ in front 
     print(f"\nTask \"{new_task['description']}\" added!")
 
 
