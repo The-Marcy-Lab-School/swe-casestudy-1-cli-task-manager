@@ -30,6 +30,8 @@ def add_task(description):
 # Your Tasks:
 # 1. [x] Complete the CLI Task Manager project
 # 2. [ ] Answer investigation questions
+#
+# 1 of 2 tasks complete
 def view_tasks():
     if len(tasks) == 0:
         print('\nNo tasks yet. Add one!')
@@ -41,6 +43,9 @@ def view_tasks():
         task = tasks[i]
         checkbox = '[x]' if task["is_complete"] else '[ ]'
         print(f'{i + 1}. {checkbox} {task["description"]}')
+
+    completed_tasks = [task for task in tasks if task["is_complete"]]
+    print(f'\n{len(completed_tasks)} of {len(tasks)} tasks complete')
 
 def complete_task(task_index):
     if task_index < 0 or task_index >= len(tasks):

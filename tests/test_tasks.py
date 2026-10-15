@@ -39,7 +39,17 @@ def test_view_tasks_prints_numbered_tasks_with_checkboxes(capsys):
         '\nYour Tasks:\n'
         '1. [x] Complete the CLI Task Manager project\n'
         '2. [ ] Answer investigation questions\n'
+        '\n'
+        '1 of 2 tasks complete\n'
     )
+
+
+def test_view_tasks_counts_a_newly_completed_task(capsys):
+    tasks[1]["is_complete"] = True
+
+    view_tasks()
+
+    assert '2 of 2 tasks complete' in capsys.readouterr().out
 
 
 def test_view_tasks_prints_a_message_when_there_are_no_tasks(capsys):
