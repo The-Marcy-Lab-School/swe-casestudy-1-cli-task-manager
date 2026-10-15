@@ -36,10 +36,11 @@ def view_tasks():
         return
 
     print('\nYour Tasks:')
-    for index, task in enumerate(tasks, start=1):
+    
+    for i in range(len(tasks)):
+        task = tasks[i]
         checkbox = '[x]' if task["is_complete"] else '[ ]'
-        print(f'{index}. {checkbox} {task["description"]}')
-
+        print(f'{i + 1}. {checkbox} {task["description"]}')
 
 def complete_task(task_index):
     if task_index < 0 or task_index >= len(tasks):
